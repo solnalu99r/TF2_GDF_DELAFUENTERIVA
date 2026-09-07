@@ -72,7 +72,7 @@ st.markdown(
     .stTabs [data-baseweb="tab-panel"] { padding-top: 0 !important; }
     div[data-testid="stVerticalBlockBorderWrapper"] { margin-bottom: 0 !important; }
     .st-key-fila_fecha_slider {
-        margin-top: -74px;
+        margin-top: -20px;
         position: relative;
         z-index: 5;
         background-color: #D1D5DB;
@@ -212,9 +212,9 @@ with tab_monitoreo:
     ]).dropna()
     fecha_min, fecha_max = fechas_disponibles.min().date(), fechas_disponibles.max().date()
 
-    with st.container(key="fila_fecha_slider"):
         col_titulo, col_slider = st.columns([3, 2])
-        with col_slider:
+    with col_slider:
+        with st.container(key="fila_fecha_slider"):
             fecha_desde, fecha_hasta = st.slider(
                 "Rango de fechas",
                 min_value=fecha_min, max_value=fecha_max,
