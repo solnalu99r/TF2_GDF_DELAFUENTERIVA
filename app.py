@@ -81,9 +81,13 @@ st.markdown(
     .st-key-fila_fecha_slider * {
         color: #111111 !important;
     }
-    .st-key-fila_fecha_slider div[data-testid="stSliderTickBarMin"],
+        .st-key-fila_fecha_slider div[data-testid="stSliderTickBarMin"],
     .st-key-fila_fecha_slider div[data-testid="stSliderTickBarMax"] {
         display: none !important;
+    }
+    .st-key-fila_fecha_slider div[data-testid="stSlider"] {
+        padding-bottom: 0px !important;
+        margin-bottom: 0px !important;
     }
     .st-key-logo_chico_top {
         margin-top: 3rem !important;
