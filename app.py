@@ -40,6 +40,10 @@ st.markdown(
         overflow: visible !important;
         height: auto !important;
     }
+        .js-plotly-plot, .plot-container {
+        overflow: visible !important;
+        height: auto !important;
+    }
     }
     .stTabs [data-baseweb="tab"] {
         flex: 1;
