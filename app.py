@@ -36,6 +36,10 @@ st.markdown(
         border: 1px solid #F97316;
         border-radius: 6px;
         padding: 4px;
+        div[data-testid="stElementContainer"] {
+        overflow: visible !important;
+        height: auto !important;
+    }
     }
     .stTabs [data-baseweb="tab"] {
         flex: 1;
