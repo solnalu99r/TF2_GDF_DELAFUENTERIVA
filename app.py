@@ -56,10 +56,6 @@ st.markdown(
         background-color: #22262B;
         border: 1px solid #F97316; border-radius: 6px; padding: 6px 8px;
     }
-    .st-key-fila_fecha_slider div[data-testid="stSlider"] {
-        padding-top: 0px;
-        padding-bottom: 0px;
-    }
     div[data-testid="stPlotlyChart"] {
         background-color: #22262B;
         border: 1px solid #F97316; border-radius: 6px; padding: 1px;
