@@ -460,7 +460,7 @@ with tab_definiciones:
         },
     ]
 
-        for ind in indicadores:
+    for ind in indicadores:
         with st.container(border=True):
             st.markdown(f"**{ind['nombre']}**")
             st.markdown(f"**Descripción:** {ind['descripcion']}")
