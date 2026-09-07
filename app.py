@@ -1,5 +1,4 @@
 
-
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
@@ -72,7 +71,7 @@ st.markdown(
     .stTabs [data-baseweb="tab-panel"] { padding-top: 0 !important; }
     div[data-testid="stVerticalBlockBorderWrapper"] { margin-bottom: 0 !important; }
     .st-key-fila_fecha_slider {
-        margin-top: -20px;
+        margin-top: -74px;
         position: relative;
         z-index: 5;
         background-color: #D1D5DB;
