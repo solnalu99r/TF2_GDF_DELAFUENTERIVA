@@ -1,4 +1,4 @@
-
+%%writefile app.py
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
@@ -65,15 +65,21 @@ st.markdown(
     }
     label[data-testid="stWidgetLabel"] p { color: #F97316 !important; font-weight: 600; }
     .block-container { padding-top: 0.1rem; padding-bottom: 0.1rem; }
-    div[data-testid="stVerticalBlock"] { gap: 0.1rem; }
+    div[data-testid="stVerticalBlock"] { gap: 0.6rem; }
     div[data-testid="stHorizontalBlock"] { gap: 0.3rem; }
     h2 { margin-bottom: 0.0rem !important; margin-top: 0 !important; }
     .stTabs [data-baseweb="tab-panel"] { padding-top: 0 !important; }
     div[data-testid="stVerticalBlockBorderWrapper"] { margin-bottom: 0 !important; }
     .st-key-fila_fecha_slider {
-        margin-top: -54px;
+        margin-top: -74px;
         position: relative;
         z-index: 5;
+        background-color: #D1D5DB;
+        border-radius: 8px;
+        padding: 6px 10px 2px 10px;
+    }
+    .st-key-fila_fecha_slider * {
+        color: #111111 !important;
     }
     </style>
     """,
@@ -145,48 +151,57 @@ for col in ["Saldo", "Saldo vencido", "Creditos activos", "Cuotas impagas", "Dí
         if col in ["Saldo", "Saldo vencido"]:
             tabla[col] = tabla[col].round(0).astype(int)
 
-st.markdown(
-    """
-    <h1 style="text-align: center; margin-top: 2rem;">
-        Tablero de gestión crediticia — Masori
-    </h1>
-    """,
-    unsafe_allow_html=True,
-)
+col_logo_chico, col_titulo_top = st.columns([1, 8])
+with col_logo_chico:
+    st.image(f"{RUTA_DATA}/logo_masori_blanco.png", width=60)
+with col_titulo_top:
+    st.markdown(
+        """
+        <h1 style="text-align: center; margin-top: 2rem;">
+            Tablero de gestión crediticia — Masori
+        </h1>
+        """,
+        unsafe_allow_html=True,
+    )
 
 tab_intro, tab_monitoreo, tab_tabla, tab_definiciones = st.tabs(
     ["Resumen general", "Monitoreo de cartera", "Tabla operativa", "Documentación"]
 )
 
 with tab_intro:
-    st.header("Objetivo")
-    st.markdown(
-        """
-        El presente tablero tiene como objetivo monitorear el desempeño de la cartera de créditos de
-        **Masori S.A.**, a través del seguimiento de indicadores clave de aprobación, cobranza y mora
-        que permiten evaluar la eficiencia operativa y el estado general de la cartera.
+    col_texto_intro, col_logo_grande = st.columns([3, 1])
+    with col_texto_intro:
+        st.header("Objetivo")
+        st.markdown(
+            """
+            El presente tablero tiene como objetivo monitorear el desempeño de la cartera de créditos de
+            **Masori S.A.**, a través del seguimiento de indicadores clave de aprobación, cobranza y mora
+            que permiten evaluar la eficiencia operativa y el estado general de la cartera.
 
-        En la pestaña "Monitoreo de cartera" se presentan las tarjetas con los indicadores actuales,
-        junto con gráficos de concentración por línea de crédito, estado de los créditos, distribución
-        de mora, composición de la cuota y otorgamiento frente al horizonte de vencimientos. Todos los
-        gráficos y tarjetas responden al rango de fechas seleccionado arriba a la derecha. En "Tabla
-        operativa" se puede consultar el detalle por cliente, filtrable por estado y por cuotas impagas.
-        """
-    )
+            En la pestaña "Monitoreo de cartera" se presentan las tarjetas con los indicadores actuales,
+            junto con gráficos de concentración por línea de crédito, estado de los créditos, distribución
+            de mora, composición de la cuota y otorgamiento frente al horizonte de vencimientos. Todos los
+            gráficos y tarjetas responden al rango de fechas seleccionado arriba a la derecha. En "Tabla
+            operativa" se puede consultar el detalle por cliente, filtrable por estado y por cuotas impagas.
+            """
+        )
 
-    st.header("Origen de los datos")
-    st.markdown(
-        """
-        Los datos provienen de cuatro exports del sistema de gestión de Masori:
+        st.header("Origen de los datos")
+        st.markdown(
+            """
+            Los datos provienen de cuatro exports del sistema de gestión de Masori:
 
-        - **Contacto:** datos de los clientes (localidad, saldo, saldo vencido, cantidad de créditos activos).
-        - **Crédito:** solicitudes de crédito (línea, monto, estado, usuario gestor).
-        - **Cuotas:** detalle de cada cuota del cronograma (capital, interés, cargo, impuesto, estado de mora).
-        - **Cobros:** pagos registrados sobre las cuotas.
-        """
-    )
+            - **Contacto:** datos de los clientes (localidad, saldo, saldo vencido, cantidad de créditos activos).
+            - **Crédito:** solicitudes de crédito (línea, monto, estado, usuario gestor).
+            - **Cuotas:** detalle de cada cuota del cronograma (capital, interés, cargo, impuesto, estado de mora).
+            - **Cobros:** pagos registrados sobre las cuotas.
+            """
+        )
 
-    st.caption("Período de análisis: septiembre 2025 – septiembre 2026.")
+        st.caption("Período de análisis: septiembre 2025 – septiembre 2026.")
+
+    with col_logo_grande:
+        st.image(f"{RUTA_DATA}/logo_masori_blanco.png", width=220)
 
 with tab_monitoreo:
     fechas_disponibles = pd.concat([
@@ -196,7 +211,6 @@ with tab_monitoreo:
     ]).dropna()
     fecha_min, fecha_max = fechas_disponibles.min().date(), fechas_disponibles.max().date()
 
-    col_titulo, col_slider = st.columns([3, 2])
     with st.container(key="fila_fecha_slider"):
         col_titulo, col_slider = st.columns([3, 2])
         with col_slider:
@@ -204,6 +218,7 @@ with tab_monitoreo:
                 "Rango de fechas",
                 min_value=fecha_min, max_value=fecha_max,
                 value=(fecha_min, fecha_max), format="MMM YYYY",
+                label_visibility="collapsed",
             )
     fecha_desde, fecha_hasta = pd.Timestamp(fecha_desde), pd.Timestamp(fecha_hasta)
 
@@ -220,6 +235,7 @@ with tab_monitoreo:
 
     # --- KPIs recalculados sobre el rango filtrado ---
     rentabilidad_f = (cuotas_f["Interés"].sum() + cuotas_f["Cargo"].sum()) / cuotas_f["Capital"].sum() * 100 if cuotas_f["Capital"].sum() else 0
+
     monto_cuotas_f = cuotas_f["Cuota - Monto"].sum()
     total_cobrado_f = cobros_f[cobros_f["Estado"] == "Confirmado"]["Monto a cobrar"].sum()
     tasa_cobranza_f = total_cobrado_f / monto_cuotas_f * 100 if monto_cuotas_f else 0
@@ -244,17 +260,20 @@ with tab_monitoreo:
         concentracion_f = credito_f.groupby("Linea de crédito").agg(
             monto=("Monto", "sum"), cantidad=("Monto", "count")
         ).reset_index().sort_values("monto", ascending=False)
+
+        hovertext_torta = [
+            f"<b>Línea de crédito:</b> {fila['Linea de crédito']}<br>"
+            f"<b>Monto:</b> {fila['monto']:,.0f}<br>"
+            f"<b>Cantidad de créditos:</b> {int(fila['cantidad'])}"
+            for _, fila in concentracion_f.iterrows()
+        ]
+
         fig = go.Figure(go.Pie(
             labels=concentracion_f["Linea de crédito"], values=concentracion_f["monto"],
             marker=dict(colors=PALETA_CATEGORICA, line=dict(color=FONDO, width=2)),
-            customdata=concentracion_f[["monto", "cantidad"]].values,
             opacity=0.75,
-            hovertemplate=(
-                "<b>Línea de crédito:</b> %{label}<br>"
-                "<b>Monto:</b> %{customdata[0]:,.0f}<br>"
-                "<b>Cantidad de créditos:</b> %{customdata[1]}<br>"
-                "<b>% del total:</b> %{percent}<extra></extra>"
-            ),
+            hovertext=hovertext_torta,
+            hovertemplate="%{hovertext}<br><b>% del total:</b> %{percent}<extra></extra>",
         ))
         tema_oscuro(fig, title=dict(text="Cartera por línea de crédito (% del monto total)"),
                     height=ALTURA_CHICA, showlegend=True, legend_title_text="Línea de crédito")
@@ -361,8 +380,8 @@ with tab_monitoreo:
         )
 
         etiquetas_txt = "<br>".join(
-            [f'<span style="color:{color}">⬤</span> {linea}' for linea, color in colores_vencimiento.items()]
-            + [f'<span style="color:{color}">⬤</span> {linea}' for linea, color in colores_otorgado.items()]
+            [f'<span style="color:{color}">⬤</span> Vto. {linea}' for linea, color in colores_vencimiento.items()]
+            + [f'<span style="color:{color}">⬤</span> Ot. {linea}' for linea, color in colores_otorgado.items()]
         )
 
         fig.add_annotation(
@@ -412,7 +431,7 @@ with tab_definiciones:
     st.markdown('<h2 style="font-size:22px; margin-top:0; margin-bottom:0.2rem;">Indicadores clave de performance</h2>', unsafe_allow_html=True)
 
     indicadores = [
-      {
+        {
             "nombre": "Rentabilidad de cartera",
             "descripcion": "Mide el margen (interés más cargo) que se genera sobre el capital efectivamente prestado en las cuotas del período seleccionado.",
             "calculo": "(Interés + Cargo de las cuotas del período / Capital de las cuotas del período) * 100.",
