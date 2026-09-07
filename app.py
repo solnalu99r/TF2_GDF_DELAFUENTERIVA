@@ -227,18 +227,6 @@ with tab_intro:
             """
         )
 
-        st.header("Origen de los datos")
-        st.markdown(
-            """
-            Los datos provienen de cuatro exports del sistema de gestión de Masori:
-
-            - **Contacto:** datos de los clientes (localidad, saldo, saldo vencido, cantidad de créditos activos).
-            - **Crédito:** solicitudes de crédito (línea, monto, estado, usuario gestor).
-            - **Cuotas:** detalle de cada cuota del cronograma (capital, interés, cargo, impuesto, estado de mora).
-            - **Cobros:** pagos registrados sobre las cuotas.
-            """
-        )
-
         st.caption("Período de análisis: septiembre 2025 – septiembre 2026.")
 
     with col_logo_grande:
@@ -371,8 +359,8 @@ with tab_monitoreo:
             marker=dict(color=colores_comp_barras, opacity=0.75, line=dict(width=0)),
             hovertemplate="%{x}: " + "%{y:,.0f}<extra></extra>",
         ))
-        tema_oscuro(fig, height=260,
-            title=dict(text="Composición de cuota: de Capital a Total"),
+        tema_oscuro(fig, height=240,
+            title=dict(text="Composición de cuotas"),
             yaxis=dict(title="Monto", tickformat=",.0f"),
             showlegend=False,
         )
@@ -432,7 +420,7 @@ with tab_monitoreo:
             bgcolor=FONDO, bordercolor=NARANJA, borderwidth=1, borderpad=4,
         )
 
-        tema_oscuro(fig, height=260,
+        tema_oscuro(fig, height=240,
             title=dict(text="Otorgamiento vs. horizonte de vencimientos"),
             xaxis=dict(title="Mes", tickformat="%b-%Y"),
             yaxis=dict(title="Monto", tickformat=",.0f"),
