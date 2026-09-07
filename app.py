@@ -96,6 +96,9 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+    .st-key-lista_indicadores div[data-testid="stVerticalBlock"] {
+        gap: 0.2rem;
+    }
 
 
 def formato_ars(x, decimales=0):
