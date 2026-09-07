@@ -76,7 +76,7 @@ st.markdown(
         z-index: 5;
         background-color: #D1D5DB;
         border-radius: 6px;
-        padding: 2px 10px 1px 10px !important;
+        padding: 5px 10px 1px 10px !important;
         height: 40px !important;
         min-height: 40px !important;
         max-height: 40px !important;
