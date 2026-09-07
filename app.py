@@ -71,12 +71,12 @@ st.markdown(
     .stTabs [data-baseweb="tab-panel"] { padding-top: 0 !important; }
     div[data-testid="stVerticalBlockBorderWrapper"] { margin-bottom: 0 !important; }
     .st-key-fila_fecha_slider {
-        margin-top: -80px;
+        margin-top: -75px;
         position: relative;
         z-index: 5;
         background-color: #D1D5DB;
         border-radius: 6px;
-        padding: 5px 10px 1px 10px !important;
+        padding: 8px 10px 1px 10px !important;
         height: 40px !important;
         min-height: 40px !important;
         max-height: 40px !important;
