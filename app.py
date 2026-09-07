@@ -81,6 +81,10 @@ st.markdown(
     .st-key-fila_fecha_slider * {
         color: #111111 !important;
     }
+    .st-key-fila_fecha_slider div[data-testid="stSliderTickBarMin"],
+    .st-key-fila_fecha_slider div[data-testid="stSliderTickBarMax"] {
+        display: none;
+    }
     .st-key-logo_chico_top {
         margin-top: 1.9rem;
     }
