@@ -83,10 +83,10 @@ st.markdown(
     }
     .st-key-fila_fecha_slider div[data-testid="stSliderTickBarMin"],
     .st-key-fila_fecha_slider div[data-testid="stSliderTickBarMax"] {
-        display: none;
+        display: none !important;
     }
     .st-key-logo_chico_top {
-        margin-top: 1.9rem;
+        margin-top: 2.4rem !important;
     }
     </style>
     """,
