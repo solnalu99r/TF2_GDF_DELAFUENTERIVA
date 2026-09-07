@@ -466,12 +466,11 @@ with tab_definiciones:
 
     with st.container(key="lista_indicadores"):
         for ind in indicadores:
-            with st.container(border=True):
-                st.markdown(
-                    f"**{ind['nombre']}**  \n"
-                    f"**Descripción:** {ind['descripcion']}  \n"
-                    f"**Cálculo:** {ind['calculo']}"
-                )
+            st.markdown(
+                f"**{ind['nombre']}**  \n"
+                f"**Descripción:** {ind['descripcion']}  \n"
+                f"**Cálculo:** {ind['calculo']}"
+            )
             
     st.markdown('<h2 style="font-size:22px; margin-top:0; margin-bottom:0.2rem;">Fuente de datos y variables</h2>', unsafe_allow_html=True)
     st.markdown(
