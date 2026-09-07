@@ -240,7 +240,7 @@ with tab_monitoreo:
     ]).dropna()
     fecha_min, fecha_max = fechas_disponibles.min().date(), fechas_disponibles.max().date()
 
-    col_titulo, col_slider = st.columns([13, 2])
+    col_titulo, col_slider = st.columns([11, 2])
     with col_slider:
         with st.container(key="fila_fecha_slider"):
             fecha_desde, fecha_hasta = st.slider(
