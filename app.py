@@ -77,7 +77,7 @@ st.markdown(
         background-color: #D1D5DB;
         border-radius: 6px;
         padding: 6px 10px 2px 10px;
-        height: 55px;
+        height: 30px;
         overflow: hidden;
     }
     .st-key-fila_fecha_slider * {
