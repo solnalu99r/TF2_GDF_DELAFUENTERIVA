@@ -19,7 +19,7 @@ GRIS_CLARO = "#D1D5DB"
 GRIS_OSCURO = "#6B7280"
 PALETA_CATEGORICA = [BLANCO, NARANJA, GRIS, NARANJA_CLARO, GRIS_CLARO, NARANJA_OSCURO, GRIS_OSCURO]
 PLANTILLA = "plotly_dark"
-ALTURA_CHICA = 250
+ALTURA_CHICA = 230
 ESTADOS_OTORGADOS = ["Acreditado", "Pagado", "Refinanciado", "Pre-cancelado"]
 
 
@@ -204,14 +204,26 @@ with tab_intro:
         st.markdown(
             """
             El presente tablero tiene como objetivo monitorear el desempeño de la cartera de créditos de
-            **Masori S.A.**, a través del seguimiento de indicadores clave de aprobación, cobranza y mora
+            **Masori S.A.**, a través del seguimiento de indicadores clave de rentabilidad, cobranza y mora
             que permiten evaluar la eficiencia operativa y el estado general de la cartera.
 
-            En la pestaña "Monitoreo de cartera" se presentan las tarjetas con los indicadores actuales,
+            En la pestaña "Monitoreo de cartera" se presentan los indicadores actuales,
             junto con gráficos de concentración por línea de crédito, estado de los créditos, distribución
             de mora, composición de la cuota y otorgamiento frente al horizonte de vencimientos. Todos los
-            gráficos y tarjetas responden al rango de fechas seleccionado arriba a la derecha. En "Tabla
+            gráficos e indicadores responden al rango de fechas seleccionado arriba a la derecha. En "Tabla
             operativa" se puede consultar el detalle por cliente, filtrable por estado y por cuotas impagas.
+            """
+        )
+
+        st.header("Origen de los datos")
+        st.markdown(
+            """
+            Los datos provienen de cuatro exports operativos de Masori:
+
+            - **Contacto:** datos de los clientes (localidad, saldo, saldo vencido, cantidad de créditos activos).
+            - **Crédito:** solicitudes de crédito (línea, monto, estado, usuario gestor).
+            - **Cuotas:** detalle de cada cuota del cronograma (capital, interés, cargo, impuesto, estado de mora).
+            - **Cobros:** pagos registrados sobre las cuotas.
             """
         )
 
@@ -433,7 +445,7 @@ with tab_tabla:
     with col1:
         estado_sel = st.selectbox("Estado del crédito", ["Todos"] + sorted(tabla["Estado"].dropna().unique().tolist()))
     with col2:
-        impagas_sel = st.selectbox("¿Tiene cuotas impagas?", ["Todos", "Sí", "No"])
+        impagas_sel = st.selectbox("Cuotas impagas", ["Todos", "Sí", "No"])
 
     tabla_filtrada = tabla.copy()
     if estado_sel != "Todos":
