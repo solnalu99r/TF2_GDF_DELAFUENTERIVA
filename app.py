@@ -58,7 +58,7 @@ st.markdown(
     }
     div[data-testid="stPlotlyChart"] {
         background-color: #22262B;
-        border: 1px solid #F97316; border-radius: 6px; padding: 1px;
+        border: 2px solid #F97316; border-radius: 6px; padding: 2px;
         box-sizing: border-box;
         overflow: visible;
     }
