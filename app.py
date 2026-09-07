@@ -460,17 +460,12 @@ with tab_definiciones:
         },
     ]
 
-    fila1 = st.columns(2)
-    fila2 = st.columns(2)
-    posiciones = fila1 + fila2
-
-    for pos, ind in zip(posiciones, indicadores):
-        with pos:
-            with st.container(border=True):
-                st.markdown(f"**{ind['nombre']}**")
-                st.markdown(f"**Descripción:** {ind['descripcion']}")
-                st.markdown(f"**Cálculo:** {ind['calculo']}")
-
+        for ind in indicadores:
+        with st.container(border=True):
+            st.markdown(f"**{ind['nombre']}**")
+            st.markdown(f"**Descripción:** {ind['descripcion']}")
+            st.markdown(f"**Cálculo:** {ind['calculo']}")
+            
     st.markdown('<h2 style="font-size:22px; margin-top:0; margin-bottom:0.2rem;">Fuente de datos y variables</h2>', unsafe_allow_html=True)
     st.markdown(
         """
