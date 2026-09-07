@@ -71,7 +71,7 @@ st.markdown(
     .stTabs [data-baseweb="tab-panel"] { padding-top: 0 !important; }
     div[data-testid="stVerticalBlockBorderWrapper"] { margin-bottom: 0 !important; }
     .st-key-fila_fecha_slider {
-        margin-top: -74px;
+        margin-top: -20px;
         position: relative;
         z-index: 5;
         background-color: #D1D5DB;
@@ -80,6 +80,9 @@ st.markdown(
     }
     .st-key-fila_fecha_slider * {
         color: #111111 !important;
+    }
+    .st-key-logo_chico_top {
+        margin-top: 1.6rem;
     }
     </style>
     """,
@@ -153,7 +156,8 @@ for col in ["Saldo", "Saldo vencido", "Creditos activos", "Cuotas impagas", "Dí
 
 col_logo_chico, col_titulo_top = st.columns([1, 8])
 with col_logo_chico:
-    st.image(f"{RUTA_DATA}/logo_masori_blanco.png", width=60)
+    with st.container(key="logo_chico_top"):
+        st.image(f"{RUTA_DATA}/logo_masori_blanco.png", width=60)
 with col_titulo_top:
     st.markdown(
         """
@@ -211,7 +215,7 @@ with tab_monitoreo:
     ]).dropna()
     fecha_min, fecha_max = fechas_disponibles.min().date(), fechas_disponibles.max().date()
 
-        col_titulo, col_slider = st.columns([3, 2])
+    col_titulo, col_slider = st.columns([3, 2])
     with col_slider:
         with st.container(key="fila_fecha_slider"):
             fecha_desde, fecha_hasta = st.slider(
