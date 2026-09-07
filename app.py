@@ -36,6 +36,13 @@ st.markdown(
         border: 1px solid #F97316;
         border-radius: 6px;
         padding: 4px;
+            div[data-testid="stPlotlyChart"],
+    div[data-testid="stPlotlyChart"] *,
+    div[data-testid="stElementContainer"],
+    .js-plotly-plot, .plot-container {
+        overflow: visible !important;
+        max-height: none !important;
+        height: auto !important;
     }
     .stTabs [data-baseweb="tab"] {
         flex: 1;
