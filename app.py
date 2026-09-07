@@ -86,7 +86,7 @@ st.markdown(
         display: none !important;
     }
     .st-key-logo_chico_top {
-        margin-top: 3 rem !important;
+        margin-top: 3rem !important;
     }
     </style>
     """,
