@@ -105,6 +105,9 @@ st.markdown(
     .st-key-logo_chico_top {
         margin-top: 3rem !important;
     }
+    .st-key-fila_kpis {
+        margin-top: -20px;
+    }
     </style>
     """,
     unsafe_allow_html=True,
