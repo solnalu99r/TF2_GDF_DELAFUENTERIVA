@@ -9,4 +9,4 @@ La carpeta data_anonimizada/.
 
 No se sube data_original/ por privacidad. El notebook usa automáticamente los datos anonimizados.
 
-Link al tablero: https://tf2gdfdelafuenteriva-btp89cw3si6dyycf9868kg.streamlit.app/
+Link al tablero: https://emunvtw5apnkhpmhllajkh.streamlit.app/
