@@ -271,14 +271,13 @@ with tab_monitoreo:
     pct_en_mora_f = (mora_saldo_f[mora_saldo_f.index != "Normal"].sum() / mora_saldo_f.sum() * 100) if mora_saldo_f.sum() else 0
 
     with st.container(key="fila_kpis"):
-    k1, k2, k3, k4, k5, k6 = st.columns([1, 1, 1, 1.5, 1.5, 1.5])
-    k1.metric("Rentabilidad de cartera", f"{rentabilidad_f:.1f}%")
-    k2.metric("Tasa de cobranza", f"{tasa_cobranza_f:.1f}%")
-    k3.metric("% de cartera en mora", f"{pct_en_mora_f:.1f}%")
-    k4.metric("Monto de cuotas", formato_ars(monto_cuotas_f))
-    k5.metric("Total cobrado", formato_ars(total_cobrado_f))
-    k6.metric("Pendiente de cobro", formato_ars(monto_pendiente_f))
-
+        k1, k2, k3, k4, k5, k6 = st.columns([1, 1, 1, 1.5, 1.5, 1.5])
+        k1.metric("Rentabilidad de cartera", f"{rentabilidad_f:.1f}%")
+        k2.metric("Tasa de cobranza", f"{tasa_cobranza_f:.1f}%")
+        k3.metric("% de cartera en mora", f"{pct_en_mora_f:.1f}%")
+        k4.metric("Monto de cuotas", formato_ars(monto_cuotas_f))
+        k5.metric("Total cobrado", formato_ars(total_cobrado_f))
+        k6.metric("Pendiente de cobro", formato_ars(monto_pendiente_f))
     #st.divider()
 
     col1, col2, col3 = st.columns(3)
