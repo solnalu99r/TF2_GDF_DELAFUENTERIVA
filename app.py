@@ -76,9 +76,17 @@ st.markdown(
         z-index: 5;
         background-color: #D1D5DB;
         border-radius: 6px;
-        padding: 6px 10px 2px 10px;
-        height: 30px;
-        overflow: hidden;
+        padding: 2px 10px 0px 10px !important;
+        height: 30px !important;
+        min-height: 30px !important;
+        max-height: 30px !important;
+        overflow: hidden !important;
+    }
+    .st-key-fila_fecha_slider div[data-testid="stSlider"],
+    .st-key-fila_fecha_slider div[data-baseweb="slider"] {
+        padding: 0px !important;
+        margin: 0px !important;
+        min-height: 0px !important;
     }
     .st-key-fila_fecha_slider * {
         color: #111111 !important;
