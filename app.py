@@ -270,6 +270,7 @@ with tab_monitoreo:
     mora_saldo_f = cuotas_f.groupby("Estado de mora")["Cuota - Saldo"].sum()
     pct_en_mora_f = (mora_saldo_f[mora_saldo_f.index != "Normal"].sum() / mora_saldo_f.sum() * 100) if mora_saldo_f.sum() else 0
 
+    with st.container(key="fila_kpis"):
     k1, k2, k3, k4, k5, k6 = st.columns([1, 1, 1, 1.5, 1.5, 1.5])
     k1.metric("Rentabilidad de cartera", f"{rentabilidad_f:.1f}%")
     k2.metric("Tasa de cobranza", f"{tasa_cobranza_f:.1f}%")
